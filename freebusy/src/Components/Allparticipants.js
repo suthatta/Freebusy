@@ -29,7 +29,7 @@ export default class Allparticipants extends Component {
           <h3>All Participants</h3>
           <ul>
               {console.log('items',items)}
-            {Object.keys(items).map(item => (
+            {items.map(item => (
               <li key={item.id}>
                 Name :{item.name}
                 <br></br>

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 export default class Search extends Component {
-    URL ="https://10degrees.uk/wp-json/wp/v2/posts"
+    URL =""
     state ={
         name:[],
         allNames:[]
