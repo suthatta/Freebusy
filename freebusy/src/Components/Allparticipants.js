@@ -34,8 +34,14 @@ export default class Allparticipants extends Component {
                 Id : {item.id}
                 Name :{item.name}
                 <br></br>
-                Busy :{}
-                {}
+                {console.log('itemsbusy',item.busy.map())}
+                Busy :{item.busy.map(i => (
+                  <li key={i.id}>
+                    Start:{i.start}
+                    End : {i.end}
+                    </li>
+                ))}
+              
 
                
               </li>
