@@ -9,7 +9,7 @@ export default class Allparticipants extends Component {
     }
   }
   componentDidMount() {
-    fetch('/all')
+    fetch('/api/all')
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -28,24 +28,23 @@ export default class Allparticipants extends Component {
         <div className="wrapper">
           <h3>All Participants</h3>
           <ul>
-              {console.log('items',items)}
-            {items.map(item => (
-              <li key={item.id}>
-                Id : {item.id}
-                Name :{item.name}
-                <br></br>
-                {console.log('itemsbusy',item.busy.map())}
-                Busy :{item.busy.map(i => (
-                  <li key={i.id}>
-                    Start:{i.start}
-                    End : {i.end}
-                    </li>
-                ))}
-              
+            <div> {items.map(item => 
+            <li key ={item.id}>
+              <p>ID: {item.id} </p> 
+               <p>Name: {item.name}</p>
+                <p>Busy:{item.busy.map(i => (
+                        <li>
+                          Start:{i.start}
+                          End : {i.end}
+                        </li>))}
+                </p>
+                )
+              }
 
-               
-              </li>
-            ))}
+            </li>            
+              
+            )}</div>
+           
           </ul>
         </div>
       )

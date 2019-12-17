@@ -1,7 +1,6 @@
 'use strict'
 const fs = require('fs');
-const myFile = './data/CopyFreebusy.txt';
-const writeFile = require('./writeFile')
+const myFile = './data/freebusy.txt';
 
 //declare lineByLine to read text file line by line
 //install readlines
@@ -30,9 +29,7 @@ function read(onEnd) {
       }
       empData["name"] = name
 
-      console.log("id " + id + " => ", name);
-     // logger.write(id, name);
-
+     // console.log("id " + id + " => ", name);
 
     } else {
       const columns = line.split(';');
@@ -52,19 +49,16 @@ function read(onEnd) {
       }
       busy.push({ "start":start, "end":end })
 
-      console.log("id " + id + " => ", busy);
-    //  logger.write(id, start, end);
+     // console.log("id " + id + " => ", busy);
 
     }
-  
-
   })
     .on('error', function (e) {
       // something went wrong
       console.log('error', e)
     })
     .on('end', function() {
-      console.log("end - data:", myMap)
+    //  console.log("end - data:", myMap)
 
       if (onEnd) {
         // call callback with data
