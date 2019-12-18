@@ -1,0 +1,13 @@
+.wrapper {
+   margin-left: 25px;
+}
+
+.wrapper ul {
+    text-align: left; 
+    font-size: 0.6em;
+    list-style: none;
+ }
+
+ .wrapper ul div li:nth-child(even) {
+    background-color: lightgray;
+ }

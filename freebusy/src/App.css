@@ -1,3 +1,8 @@
+* {
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 }
@@ -15,19 +20,52 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding-bottom: 0;
 }
+.menubar {
+  width:15%;
+  height: 100%;
+  left:0;
+  padding-top: 0;
+  top:10;
+  background: grey;
+  position: absolute;
+  text-align: center;
 
+}
+.menubar ul {
+  text-align:left;
+  margin-left: 10px;
+  margin-top: 10px;
+  list-style: none;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+.menubar ul li{
+ color: black;
+}
+.menubar ul li:hover {
+  color:goldenrod;
+ }
+ .menubar ul li:hover,
+ .menubar ul li:focus {
+  color:goldenrod;
+ }
 .App-link {
   color: #61dafb;
 }
-
+.container {
+  margin-left: 15%;
+  padding-right: 10px;
+  text-align: center;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

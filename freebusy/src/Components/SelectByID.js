@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
+import './SelectByID.css'
 
-export default class Allparticipants extends Component {
+export default class SelectByID extends Component {
   constructor(props) {
     super(props)
     this.state = {
       items: [],
       isLoaded: false,
+      search:'12345',
     }
   }
-  componentDidMount() {
-    fetch('/api/:id')
+  updateSearch(event){
+   // console.log('Yoo')
+   this.setState({
+     search: event.target.value
+   })
+  }
+  componentDidMount(search) {
+    fetch('/api/all')
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -26,9 +34,11 @@ export default class Allparticipants extends Component {
     } else {
       return (
         <div className="wrapper">
-          <h3>Search ID</h3>
-          <ul>
-          <div> {items.map(item => 
+          <h3>Search ID</h3>          
+         <input type="text" name="Id" value={this.state.search} 
+                onChange={this.updateSearch.bind(this)} />
+        <div className="showData">
+        {items.map(item => 
             <li key ={item.id}>
               <p>ID: {item.id} </p> 
                <p>Name: {item.name}</p>
@@ -42,11 +52,8 @@ export default class Allparticipants extends Component {
               }
 
             </li>            
-              
-            )}</div>
-           
-            
-          </ul>
+              )}
+        </div>
         </div>
       )
     }

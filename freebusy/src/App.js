@@ -1,42 +1,57 @@
 import React, {Component} from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-
 import Home from './Components/Home'
 import Allparticipants from './Components/Allparticipants'
 import SelectByID from './Components/SelectByID'
 import SelectByName from './Components/SelectByName'
+import './App.css'
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link
+} from 'react-router-dom'
+
 //import Other from  './Components/Other'
-export default class App extends Component {
-  navItems = [
-    'Home', 'Allparticipants', 'SelectByID'
-  ]
-  render() {
-    return (<div>
-      <Router>
-      <ul>
+
+export default function defaultExample() {
+
+  return(
+    <div>
+       <Router>
+      <header >
+      <h3 className="App-header">Freebusy Booking</h3>
+     <div className="menubar">
+     <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/allparticipats">Allparticipants</Link>
+          <Link to="/Allparticipants">Allparticipants</Link>
         </li>
         <li>
-          <Link to="/selectbyid">ID</Link>
+          <Link to="/SelectByID">SelectByID</Link>
         </li>
         <li>
-          <Link to="/selectbyname">name</Link>
+          <Link to="/SelectByName">SelectByName</Link>
         </li>
       </ul>
-      <Switch>
+     </div>
+     
+      </header>    
+     
+      <main className="container">
+       <Switch>
         <Route exact path="/"><Home /></Route>
-        <Route exact path="/allparticipats"><Allparticipants /></Route>
-        <Route exact path="/selectbyid"><SelectByID  /> </Route>
-        <Route exact path="/selectbyname"><SelectByName /></Route>
+        <Route exact path="/SelectByID"><SelectByID /></Route>
+        <Route exact path="/Allparticipants"><Allparticipants /></Route>    
+        <Route exact path="/SelectByName"><SelectByName /></Route>
       </Switch>
+     </main>
+      
     </Router>
-  
-    </div >
-    )
-  }
+    </div>
+  )
+
 }
+  

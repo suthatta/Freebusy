@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Allparticipants.css'
 
 export default class Allparticipants extends Component {
   constructor(props) {

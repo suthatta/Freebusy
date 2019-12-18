@@ -1,0 +1,16 @@
+.wrapper {
+    color:black;
+    text-align: left; 
+    font-size: 0.6em;
+  
+}
+
+.showData li{
+    list-style: none;
+ }
+ input {
+     width: 250px;
+     font-size: 1em;
+     color: black;
+     margin-bottom: 10px;
+ }
