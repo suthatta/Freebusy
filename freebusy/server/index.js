@@ -34,9 +34,9 @@ read(function (d){
     let allData = values.map(items => items).filter(id => id);
    // console.log('slldata ', allData);
     
+    
     //function get a single employeeId 
     const getId = (id) => allData.filter(e =>e.id ===id);
-    //console.log('getId', getId)
    //function get multi employeesid 
     const getMultiIds =(ids)=> {
         let multiId = allData.filter(e => e.id);

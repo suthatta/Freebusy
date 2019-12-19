@@ -8,7 +8,7 @@ export default function Home(){
         return(
         <div>
       
-      <h1>Welcome to Freebusy Booing!</h1>
+      <h1>Welcome to Freebusy Booking!</h1>
       <p></p>
 
         </div>
