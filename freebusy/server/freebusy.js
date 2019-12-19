@@ -37,8 +37,8 @@ function read(onEnd) {
       const start = columns[1];
       const end = columns[2]
       const busytime = new Date(end).getTime() - new Date(start).getTime();
-      const busyminites = Math.round(busytime / 1000 /60);
-      const busyHour = timeConvert(busyminites);
+      const busyminutes = Math.round(busytime / 1000 /60);
+      const busyHour = timeConvert(busyminutes);
 
       let empData = myMap.get(id)
       if (empData == null) {
@@ -53,10 +53,7 @@ function read(onEnd) {
    
 
       busy.push({ "start":start, "end":end , "busyHour":busyHour})
-      //let dates = new Date(busy.start).toLocaleString();
-     // let busytime = new Date(busy.end).getTime() - new Date(busy.start).getTime();
-     // let minutes = Math.round(busytime / 1000 /60);
-     // console.log("id " + id + " => ", busy);
+
   //   console.log("id " + id + " => ", busy);
 
     }
