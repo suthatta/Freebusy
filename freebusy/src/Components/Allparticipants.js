@@ -35,8 +35,9 @@ export default class Allparticipants extends Component {
                <p>Name: {item.name}</p>
                 <p>Busy:{item.busy.map(i => (
                         <li>
-                          Start:{i.start}
+                          Start : {i.start}
                           End : {i.end}
+                          Durations : {i.end - i.start}
                         </li>))}
                 </p>
                 )

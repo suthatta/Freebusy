@@ -16,7 +16,8 @@ export default class SelectByID extends Component {
      search: event.target.value
    })
   }
-  componentDidMount(search) {
+
+  componentDidMount() {
     fetch('/api/all')
       .then(res => res.json())
       .then(json => {
@@ -26,7 +27,13 @@ export default class SelectByID extends Component {
         })
       });
   }
+  getEmpId(e){
+    const { items, search} = this.state;
+    const ids = items.map(emp => emp.id);
+    const filteredIds = ids.filter(id =>id === this.state.search);
+    return filteredIds;
 
+  }
   render() {
     const { isLoaded, items } = this.state;
     if (!isLoaded) {
@@ -38,21 +45,7 @@ export default class SelectByID extends Component {
          <input type="text" name="Id" value={this.state.search} 
                 onChange={this.updateSearch.bind(this)} />
         <div className="showData">
-        {items.map(item => 
-            <li key ={item.id}>
-              <p>ID: {item.id} </p> 
-               <p>Name: {item.name}</p>
-                <p>Busy:{item.busy.map(i => (
-                        <li>
-                          Start:{i.start}
-                          End : {i.end}
-                        </li>))}
-                </p>
-                )
-              }
-
-            </li>            
-              )}
+          {this.getEmpId}
         </div>
         </div>
       )

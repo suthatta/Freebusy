@@ -1,9 +1,6 @@
 'use strict'
 //import readFile
 const read = require('./freebusy');
-const fs = require('fs');
-
-
 const express = require('express');
 const bodyParse = require("body-parser");
 const app = new express();
@@ -35,47 +32,71 @@ read(function (d){
     let values = [...data.values()]
     //grouping data by id
     let allData = values.map(items => items).filter(id => id);
-    //console.log('slldata ', allData);
+   // console.log('slldata ', allData);
+    
+    //function get a single employeeId 
+    const getId = (id) => allData.filter(e =>e.id ===id);
+    //console.log('getId', getId)
+   //function get multi employeesid 
+    const getMultiIds =(ids)=> {
+        let multiId = allData.filter(e => e.id);
+        let getIds =[];
+        for(let i in ids){
+            getIds.push(multiId.filter(e => e.id === ids[i]));
+        }
+        return getIds;
+    };
 
-    let multiIds;
-    let multinames;
+    //function get a singel employeesName
+    let getName = (name) => allData.filter(e => e.name ===name);
+    //function get multiName
+      
+    let getMultinames =(names) =>{
+        let multiNames = allData.filter(e => e.name);
+        let getNames = [];
+        for(let i in names){
+            getNames.push(multiNames.filter(e => e.name === names[i]));
+        }
+        return getNames;
+    };
  
-    // start to listen after data has been read
-    app.get('/list', (req, res) => {
-        allData.forEach(element => {
-           console.log('element',element)
-           res.json(element);
-           res.end();
-    })                              
-    })
 //get all participants
     app.get('/api/all', (req, res) => {
         res.send(allData);
     });
 
     //get single id 
-    app.get('/api/:id', (req, res)=>{
-        const result = allData.find(items => items.id === req.params.id);
+    app.get('/api/id/:id', (req, res)=>{
+        const result = getId(req.params.id);
        // console.log('result', result)
         if( !result) res.status(404).send('the id was not found');//404
         res.send(result);
     })
-  //get multi id 
-  app.get('/api/ids', (req, res)=>{
-    const result = allData.find(items => items.id === req.params);
+  //get multi id  (this case can get 3 employees)
+  app.get('/api/ids/:id/:id2/:id3', (req, res, next)=>{
+    const result = getMultiIds(req.params);
     console.log('result', result)
     if( !result) res.status(404).send('The id was not found');//404
     res.send(result);
+    next();
 })
 
  //get single name
  app.get('/api/name/:name', (req, res)=>{
-    const result = allData.find(items => items.name === req.params.name);
-    console.log('result name', result)
-    if( !result) res.status(404).send('The name was not found');//404
+    const result = getName(req.params.name);
+   // console.log('result', result)
+    if( !result) res.status(404).send('the name was not found');//404
     res.send(result);
 })
 
+//get multi Names (this case can get 3 employees)
+app.get('/api/names/:name/:name2/:name3', (req, res, next)=>{
+    const result = getMultinames(req.params);
+    console.log('result', result)
+    if( !result) res.status(404).send('The id was not found');//404
+    res.send(result);
+    next();
+})
     app.listen(PORT, err => {
         if (err) {
             return console.log(err);
@@ -83,3 +104,4 @@ read(function (d){
         console.log(`Server started on http://localhost:${PORT}`);
     })
 })
+
